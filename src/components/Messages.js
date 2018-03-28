@@ -4,16 +4,15 @@ export default class Messages extends Component {
     render() {
         return (
             <div>
-                    <p>
-                       <span className='time'>09/08/2018 </span>
-                       <span className='chatName'>July: </span>
-                       <span>Hello</span>
-                    </p>
-                    <p>
-                        <span className='time'>09/08/2018 </span>
-                        <span className='chatName'>Sasha: </span>
-                        <span>Hey baby</span>
-                    </p>
+                {
+                    this.props.messages.map((mess, i) =>
+                        <p key={i}>
+                            <span className='time'>{mess.datetime} </span>
+                            <span className='chatName'>{mess.author} </span>
+                            <span>{mess.text}</span>
+                        </p>
+                    )
+                }
                 <br/>
                 <br/>
                 <input type="text"/>

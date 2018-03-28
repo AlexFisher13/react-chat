@@ -1,9 +1,7 @@
 import React, {Component} from 'react'
-import faker from "faker";
 
 export default class Users extends Component {
     render() {
-        const rndUser = faker.internet.userName();
         return (
             <div>
                 <div className='onlineUsers'>
@@ -15,7 +13,7 @@ export default class Users extends Component {
                         <li key={i}>{user}</li>
                     )}
                 </ul>
-                <button onClick={() => this.props.addNewUser(rndUser)}>Add User</button>
+                <button onClick={() => this.props.addNewUser()}>Add User</button>
             </div>
         )
     }

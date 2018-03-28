@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import Messages from "../components/Messages";
 import Users from "../components/Users";
+import {addUser} from "../actions/actions";
+import {bindActionCreators} from 'redux'
 
 class Chat extends Component {
   render() {
     return (
       <div className='chat'>
-         <Messages/>
+         <Messages messages={this.props.messages}/>
          <Users users={this.props.users} addNewUser={this.props.addNewUser}/>
       </div>
     );
@@ -16,13 +18,14 @@ class Chat extends Component {
 
 const mapStateToProps = (store) => {
     return {
-        users: store
+        users: store.userReducer,
+        messages: store.messageReducer
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        addNewUser: (rndUser) =>  dispatch({type: 'ADD_USER', payload: rndUser})
+        addNewUser: bindActionCreators(addUser, dispatch)
     }
 }
 
